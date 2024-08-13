@@ -384,6 +384,8 @@ class FigureCanvasTk(FigureCanvasBase):
 
     def _get_key(self, event):
         unikey = event.char
+        if not isinstance(unikey, str):
+            unikey = "\0"
         key = cbook._unikey_or_keysym_to_mplkey(unikey, event.keysym)
         if key is not None:
             mods = self._mpl_modifiers(event, exclude=key)
